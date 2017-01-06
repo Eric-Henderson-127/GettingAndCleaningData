@@ -77,8 +77,8 @@ combined.data <- combined.data[,goodcols]
 rm(goodcols)
 
 # rearrange location of Mag (Magnitude) to align with other vector descriptors (x, y, and z)
-names(combined.data) <- gsub("Mag-mean\\(\\)","-mean\\(\\)-Mag", names(combined.data))
-names(combined.data) <- gsub("Mag-std\\(\\)","-std\\(\\)-Mag", names(combined.data))
+names(combined.data) <- gsub("Mag-mean\\(\\)","-meanMag", names(combined.data))
+names(combined.data) <- gsub("Mag-std\\(\\)","-stdMag", names(combined.data))
 
 # substitute in descriptive words to replace abbreviations in column names
 names(combined.data) <- gsub("^t","time", names(combined.data))
@@ -89,8 +89,11 @@ names(combined.data) <- gsub("Body","body", names(combined.data))
 names(combined.data) <- gsub("Acc","accelerometer", names(combined.data))
 names(combined.data) <- gsub("Gyro","gyroscope", names(combined.data))
 names(combined.data) <- gsub("Jerk","jerk", names(combined.data))
-names(combined.data) <- gsub("std","standarddeviation", names(combined.data))
-names(combined.data) <- gsub("Mag","Magnitude", names(combined.data))
+names(combined.data) <- gsub("-std","standarddeviation", names(combined.data))
+names(combined.data) <- gsub("standarddeviation\\(\\)","standarddeviation", names(combined.data))
+names(combined.data) <- gsub("-mean","mean", names(combined.data))
+names(combined.data) <- gsub("mean\\(\\)","mean", names(combined.data))
+names(combined.data) <- gsub("Mag","magnitude", names(combined.data))
 
 # calculate average for all data per subject per activity and store it in a new tidy.data set
 tidy.data <- group_by(combined.data, subject, activity) %>%
