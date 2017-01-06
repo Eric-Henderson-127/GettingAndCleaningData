@@ -1,5 +1,4 @@
 # README for Getting and Cleaning Data Week 4 Project 
----------------------------------
 
 Note: Included R script written and tested in RStudio v1.0.44(OS: Windows 10) and requires the tidyr and dplyr packages
 
